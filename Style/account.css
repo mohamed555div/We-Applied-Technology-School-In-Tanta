@@ -1,0 +1,466 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f6fb;
+}
+
+.loader {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            box-shadow:
+                inset 0 5px 10px rgba(255, 255, 255, 0.6),
+                inset 0 -5px 10px rgba(0, 0, 0, 0.15),
+                0 10px 20px rgba(0, 0, 0, 0.2),
+                0 0 40px rgba(0, 0, 0, 0.1);
+            animation: fadeOut 1.2s ease forwards;
+            animation-delay: 2.8s;
+        }
+
+
+        .jimu-primary-loading,
+        .jimu-primary-loading::before,
+        .jimu-primary-loading::after {
+            background: #8c00ff;
+            animation: loading-keys 0.8s infinite ease-in-out;
+            width: 13.6px;
+            height: 32px;
+            position: absolute;
+            top: calc(50% - 16px);
+            border-radius: 6px;
+        }
+
+        .jimu-primary-loading::before,
+        .jimu-primary-loading::after {
+            content: "";
+        }
+
+        .jimu-primary-loading::before {
+            left: -20px;
+        }
+
+        .jimu-primary-loading::after {
+            left: 20px;
+            animation-delay: 0.16s !important;
+        }
+
+        .jimu-primary-loading {
+            animation-delay: 0.8s !important;
+        }
+
+        @keyframes loading-keys {
+
+            0%,
+            80%,
+            100% {
+                opacity: 0.75;
+                height: 32px;
+            }
+
+            40% {
+                opacity: 1;
+                height: 40px;
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+
+/* 🎬 حركة دخول الجزء الشمال */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+    filter: blur(6px);
+    background-color:#e8d9f5;
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+/* 🎬 حركة دخول الصورة */
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(6px);
+    background-color:#e8d9f5;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* 🎬 حركة دخول صندوق الفورم */
+@keyframes fadeInBox {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+/* ✨ تطبيق الحركات */
+.left {
+  opacity: 0;
+  animation: slideInLeft 1.2s ease forwards;
+  animation-delay: 3.2s;
+}
+
+.left img {
+  opacity: 0;
+  animation: fadeInImage 1.2s ease forwards;
+  animation-delay: 3.6s;
+}
+
+.form-box {
+  opacity: 0;
+  animation: fadeInBox 1.2s ease forwards;
+  animation-delay: 3.2s;
+}
+
+/* ⏱️ عناصر الفورم تظهر بالتدريج */
+.form-box > * {
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInBox 0.8s ease forwards;
+}
+
+.form-box h2 { animation-delay: 4.2s; }
+.form-box input:nth-of-type(1) { animation-delay: 4.4s; }
+.form-box input:nth-of-type(2) { animation-delay: 4.6s; }
+.form-box select:nth-of-type(1) { animation-delay: 4.8s; }
+.form-box select:nth-of-type(2) { animation-delay: 5.0s; }
+.form-box button { animation-delay: 5.2s; }
+.form-box .alt { animation-delay: 5.4s; }
+
+
+/* Main container */
+.container {
+    display: flex;
+    height: 100vh;
+    flex-wrap: wrap;
+}
+
+/* 🌈 نفس الخلفية المتدرجة الناعمة زي اليمين */
+.left {
+    flex: 1;
+    background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    min-width: 300px;
+    overflow: hidden;
+    opacity: 0;
+    animation: slideInLeft 1s ease forwards;
+    animation-delay: 3.2s;
+}
+
+/* ✨ الخلفية الدائرية الناعمة */
+.left::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: none;
+    z-index: 0;
+}
+
+/* الصورة داخل اليسار */
+.left img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 3.6s;
+}
+
+/* 🎬 حركات الدخول */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+
+
+/* ✅ تأثير الظهور بالتدريج */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-box > * {
+  opacity: 0;
+  animation: fadeIn 10.2s ease forwards;
+}
+
+.form-box h2 {
+  animation-delay: 2.2s;
+}
+
+.form-box input:nth-of-type(1) {
+  animation-delay: 4.4s;
+}
+
+.form-box select:nth-of-type(1) {
+  animation-delay: 4.6s;
+}
+
+.form-box select:nth-of-type(2) {
+  animation-delay: 4.8s;
+}
+
+.form-box input:nth-of-type(2) {
+  animation-delay: 4.2s;
+}
+
+.form-box button {
+  animation-delay: 4.4s;
+}
+
+.form-box .alt {
+  animation-delay: 4.5s;
+}
+
+
+/* Left section */
+.left {
+    flex: 1;
+    background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: relative;
+    min-width: 300px;
+}
+
+.left img {
+    width: 80%;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Right section */
+.right {
+    flex: 1;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    min-width: 320px;
+    padding: 30px 0;
+}
+
+/* خلفية متدرجة ناعمة */
+.right::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at top right, #e8d9f5 0%, transparent 70%);
+    z-index: 0;
+}
+
+.form-box {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 400px;
+    background: none;
+    backdrop-filter: blur(8px);
+    border-radius: 16px;
+    transition: 0.4s ease;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #4b0082;
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: 1px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 10px 0;
+    border: 1px solid #d3c6e8;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: 0.3s ease;
+    outline: none;
+    background-color: #faf8fc;
+}
+
+input:focus,
+select:focus {
+    border-color: #8e24aa;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(142, 36, 170, 0.15);
+}
+
+/* زر احترافي */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 18px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #6a1b9a, #8e24aa);
+    color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 14px rgba(142, 36, 170, 0.3);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #50157a, #7b1fa2);
+    box-shadow: 0 8px 18px rgba(80, 21, 122, 0.35);
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.alt {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.alt a {
+    color: #6a1b9a;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* 📱 الموبايل والتابلت */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .left {
+        display: none;
+    }
+
+    .left img {
+        width: 65%;
+    }
+
+    .right {
+        height: auto;
+        padding: 40px 20px;
+        box-shadow: none;
+    }
+
+    .form-box {
+        width: 100%;
+        max-width: 360px;
+    }
+}
+
+/* 📱 شاشات صغيرة جدًا */
+@media (max-width: 480px) {
+  
+
+    h2 {
+        font-size: 22px;
+    }
+
+    input,
+    select {
+        font-size: 13px;
+        padding: 10px 12px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+
+    .left img {
+        width: 80%;
+    }
+}

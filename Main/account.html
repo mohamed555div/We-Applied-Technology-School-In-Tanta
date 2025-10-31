@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WE SCHOOL | Create Account</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/account.css">
+    
+</head>
+
+<body>
+
+    <div class="loader">
+        <div class="jimu-primary-loading"></div>
+    </div>
+    
+    <section>
+    <div class="container">
+        <!-- Left Section -->
+        <div class="left">
+            <img src="../imges/icon1.png"
+                alt="WE School Image">
+        </div>
+
+        <!-- Right Section -->
+            <div class="right">
+                <div class="form-box">
+                    <h2>WE SCHOOL</h2>
+                    <form action="home.html">
+                        <input type="email" placeholder="Email" required name="email" >
+                        <input type="password" placeholder="Password" required minlength="6" maxlength="32" name="password">
+                        <input type="text" placeholder="First Name" required name="firstname" >
+                        <input type="text" placeholder="Last Name" required name="lastname" >
+                        <input type="text" placeholder="Invite Code" required minlength="6" maxlength="6">
+
+                        <select required>
+                            <option selected>Select Your Role</option>
+                            <option>Student</option>
+                            <option>Teacher</option>
+                        </select>
+
+                        <select required>
+                            <option selected>Select Your Grade</option>
+                            <option>Grade 1</option>
+                            <option>Grade 2</option>
+                            <option>Grade 3</option>
+                        </select>
+
+                        <a href="home.html"><button type="submit">Create Account</button></a>
+                    </form>
+
+                    <div class="alt">
+                        <p>Already have an account? <a href="index.html">Login</a></p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </section>
+
+</body>
+
+</html>
